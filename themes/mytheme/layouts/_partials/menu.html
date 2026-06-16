@@ -14,6 +14,20 @@ Renders a menu for the given menu ID.
   <nav>
     <ul>
       {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
+      {{ with page.OutputFormats.Get "rss" }}
+        <li>
+          <a href="{{ .RelPermalink }}">
+            <img src="/rss.svg" alt="RSS" width="14px" style="vertical-align:baseline;">
+          </a>
+        </li>
+      {{ end }}
+      <li>
+        <svg width="16px" height="16px" onclick="toggleDarkMode()" style="user-select: none; cursor: pointer;">
+          <mask id="myMask"><circle cx="8" cy="8" r="7" fill="white" /></mask>
+          <circle cx="8" cy="8" r="7" stroke-width="1" fill="var(--cbg)" stroke="var(--cfg)" />
+          <rect class="system_theme_fg" x="8" width="8" height="16" mask="url(#myMask)" />
+        </svg>
+      </li>
     </ul>
   </nav>
 {{- end }}

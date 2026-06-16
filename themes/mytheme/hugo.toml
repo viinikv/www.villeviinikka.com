@@ -4,7 +4,7 @@ title = 'My New Hugo Project'
 
 [menus]
   [[menus.main]]
-    name = 'Home'
+    name = 'About'
     pageRef = '/'
     weight = 10
 
@@ -13,12 +13,16 @@ title = 'My New Hugo Project'
     pageRef = '/posts'
     weight = 20
 
-  [[menus.main]]
-    name = 'Tags'
-    pageRef = '/tags'
-    weight = 30
+#  [[menus.main]]
+#    name = 'Tags'
+#    pageRef = '/tags'
+#    weight = 30
 
 [module]
   [module.hugoVersion]
     extended = false
     min = '0.146.0'
+
+[markup]
+  [markup.highlight]
+    noClasses=false
