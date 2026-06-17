@@ -5,7 +5,7 @@ draft = false
 +++
 # Ville Viinikka
 
-PGP keyid: `376E 1665 4559 0E1D`
+PGP keyid: `376E 1665 4559 0E1D` ([download](376E166545590E1D.asc))
 
 Github: [viinikv](https://github.com/viinikv/)
 
