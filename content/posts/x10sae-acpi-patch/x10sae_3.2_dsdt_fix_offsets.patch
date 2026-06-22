@@ -1,0 +1,162 @@
+--- DSDT.dsl	2026-06-22 18:11:23.628732330 +0300
++++ DSDT_patched.dsl	2026-06-22 18:13:53.948625411 +0300
+@@ -46,9 +46,9 @@
+     External (\_SB_.PCI0.GFX0.IUEH, MethodObj)    // 1 Arguments
+     External (\_SB_.PCI0.GFX0.STAT)
+     External (\_SB_.PCI0.GFX0.TCHE)
+-    External (\_SB_.PCI0.I2C0.PS0X)
+-    External (\_SB_.PCI0.I2C0.PS3X)
+-    External (\_SB_.PCI0.I2C1.PS0X)
++    External (\_SB_.PCI0.I2C0.PS0X, MethodObj)
++    External (\_SB_.PCI0.I2C0.PS3X, MethodObj)
++    External (\_SB_.PCI0.I2C1.PS0X, MethodObj)
+     External (\_SB_.PCI0.LPCB.H_EC.CHRG)
+     External (\_SB_.PCI0.PAUD.PUAM, MethodObj)    // 0 Arguments
+     External (\_SB_.PCI0.PEG0.HPME, MethodObj)    // 0 Arguments
+@@ -57,14 +57,14 @@
+     External (\_SB_.PCI0.RP03.SCLK)
+     External (\_SB_.PCI0.RP04.SCLK)
+     External (\_SB_.PCI0.RP06.SCLK)
+-    External (\_SB_.PCI0.SDHC.PS0X)
++    External (\_SB_.PCI0.SDHC.PS0X, MethodObj)
+     External (\_SB_.PCI0.XHC_.DUAM, MethodObj)    // 0 Arguments
+-    External (\_SB_.PCI0.XHC_.PS0X)
+-    External (\_SB_.PCI0.XHC_.PS3X)
+-    External (\_SB_.PCI0.XHC_.RHUB.INIR)
+-    External (\_SB_.PCI0.XHC_.RHUB.PS0X)
+-    External (\_SB_.PCI0.XHC_.RHUB.PS2X)
+-    External (\_SB_.PCI0.XHC_.RHUB.PS3X)
++    External (\_SB_.PCI0.XHC_.PS0X, MethodObj)
++    External (\_SB_.PCI0.XHC_.PS3X, MethodObj)
++    External (\_SB_.PCI0.XHC_.RHUB.INIR, MethodObj)
++    External (\_SB_.PCI0.XHC_.RHUB.PS0X, MethodObj)
++    External (\_SB_.PCI0.XHC_.RHUB.PS2X, MethodObj)
++    External (\_SB_.PCI0.XHC_.RHUB.PS3X, MethodObj)
+     External (\_SB_.TPM_.PTS_, MethodObj)    // 1 Arguments
+     External (\_TZ_.TZ00)
+     External (\_TZ_.TZ01)
+@@ -75,7 +75,7 @@
+     External (LIDS, MethodObj)    // 0 Arguments
+     External (M64B, IntObj)
+     External (M64L, IntObj)
+-    External (MDBG, IntObj)
++    External (MDBG, MethodObj)
+     External (PDC0)
+     External (PDC1)
+     External (PDC2)
+@@ -669,6 +669,7 @@
+         TBTS,   8, 
+         ECGP,   8, 
+         IVDF,   8, 
++	Offset (0x352),
+         WDM1,   8, 
+         CID1,   16, 
+         WDM2,   8, 
+@@ -676,7 +677,6 @@
+         ECR1,   8, 
+         DRMB,   64, 
+         EMOD,   8, 
+-        INSC,   8
+     }
+ 
+     Scope (_SB)
+@@ -9026,7 +9026,7 @@
+ 
+                 If (CondRefOf (\_SB.PCI0.XHC.PS0X))
+                 {
+-                    PS0X
++                    PS0X ()
+                 }
+ 
+                 And (PDBM, 0xFFFFFFFFFFFFFFFD, PDBM)
+@@ -9087,7 +9087,7 @@
+ 
+                 If (CondRefOf (\_SB.PCI0.XHC.PS3X))
+                 {
+-                    PS3X
++                    PS3X ()
+                 }
+ 
+                 And (PDBM, 0xFFFFFFFFFFFFFFFD, PDBM)
+@@ -9201,7 +9201,7 @@
+ 
+                     If (CondRefOf (\_SB.PCI0.XHC.RHUB.PS0X))
+                     {
+-                        PS0X
++                        PS0X ()
+                     }
+                 }
+ 
+@@ -9209,7 +9209,7 @@
+                 {
+                     If (CondRefOf (\_SB.PCI0.XHC.RHUB.PS2X))
+                     {
+-                        PS2X
++                        PS2X ()
+                     }
+                 }
+ 
+@@ -9217,7 +9217,7 @@
+                 {
+                     If (CondRefOf (\_SB.PCI0.XHC.RHUB.PS3X))
+                     {
+-                        PS3X
++                        PS3X ()
+                     }
+                 }
+ 
+@@ -10375,7 +10375,7 @@
+                 LPD0 (SB11, SMD1)
+                 If (CondRefOf (\_SB.PCI0.I2C0.PS0X))
+                 {
+-                    PS0X
++                    PS0X ()
+                 }
+             }
+ 
+@@ -10384,7 +10384,7 @@
+                 LPD3 (SB11, SMD1)
+                 If (CondRefOf (\_SB.PCI0.I2C0.PS3X))
+                 {
+-                    PS3X
++                    PS3X ()
+                 }
+             }
+         }
+@@ -10486,7 +10486,7 @@
+             {
+                 If (CondRefOf (\_SB.PCI0.I2C1.PS0X))
+                 {
+-                    PS0X
++                    PS0X ()
+                 }
+ 
+                 LPD0 (SB12, SMD2)
+@@ -10896,7 +10896,7 @@
+                 LPD0 (SB17, SMD7)
+                 If (CondRefOf (\_SB.PCI0.SDHC.PS0X))
+                 {
+-                    PS0X
++                    PS0X ()
+                 }
+             }
+ 
+@@ -11992,8 +11992,7 @@
+     {
+         If (CondRefOf (MDBG))
+         {
+-            Return (MDBG)
+-            Arg0
++            Return (MDBG (Arg0))
+         }
+ 
+         Return (Zero)
+@@ -18211,7 +18210,7 @@
+         {
+             If (CondRefOf (\_SB.PCI0.XHC.RHUB.INIR))
+             {
+-                INIR
++                INIR ()
+             }
+         }
+     }
