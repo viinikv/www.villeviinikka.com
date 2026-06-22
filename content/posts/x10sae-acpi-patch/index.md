@@ -118,7 +118,7 @@ Scope (_SB.PCI0) {
                     }
                 ...
 ```
-One of the UUIDs matches the number from earlier. Well, almost. Ours was in a Microsoft special [mixed-endian format](https://en.wikipedia.org/wiki/Universally_unique_identifier#Endianness). I don't know what `Arg2` is, but `One` would be the most interesting case. `DRMB` is a 64 bit variable inside the GNVS (Global Non-volatile Sleeping Memory) region.
+One of the UUIDs matches the number from earlier. Well, almost. Ours was in a Microsoft special [mixed-endian format](https://en.wikipedia.org/wiki/Universally_unique_identifier#Byte_ordering). I don't know what `Arg2` is, but `One` would be the most interesting case. `DRMB` is a 64 bit variable inside the GNVS (Global Non-volatile Sleeping Memory) region.
 ```
 OperationRegion (GNVS, SystemMemory, 0xDD863C18, 0x0362)
 Field (GNVS, AnyAcc, Lock, Preserve)
