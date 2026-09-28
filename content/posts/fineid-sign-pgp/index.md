@@ -11,6 +11,8 @@ Here is how I set up the card in Linux:
 {{< figure
   src="towi.webp"
   alt="colorful smart card reader and old phone card"
+  width=1280
+  height=476
   caption="\"Fun\". The aesthetic matches my phone card."
 >}}
 

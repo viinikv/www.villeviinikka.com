@@ -6,6 +6,8 @@ title = "Patching X10SAE bios to fix Win11 compatibility"
 {{< figure
   src="windbg.webp"
   alt="screenshot of windows debugger"
+  width=1280
+  height=647
   caption="WinDbg. Interestingly this image is 112kB as 80% lossy webp but 46kB lossless."
 >}}
 
